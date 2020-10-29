@@ -1,2 +1,2 @@
-# Neurostart-Hack
-Materials for neurostart hackathon.
+# Tremoro-web
+Данный репозиторий будет содержать веб-сайт для пациентов с болезнью Паркинсона.<br>
