@@ -1,0 +1,56 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Заходи, не стесняйся</title>
+      
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}  ?ver=2" />
+    
+    {% load i18n %}
+    {% load account socialaccount %}
+    {% block content %}
+
+  </head>
+
+  <body>
+    {% include 'base.html' %}
+
+    <div class="carousel carousel-slider center">
+      <div class="carousel-fixed-item center">
+        <a class="btn waves-effect white grey-text darken-text-2">button</a>
+      </div>
+      {% for fd in recordings %}
+      <div class="carousel-item" style="background-image: url({{fd.img}});" href="#one!"> 
+        <h2 class="black-text">{{fd.header}}</h2>
+        <p class="black-text">{{fd.text}}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div>
+      
+    </div>
+    
+    <script>
+      $('.carousel.carousel-slider').carousel({
+          fullWidth: true,
+          indicators: true
+      });
+      autoplay();
+      function autoplay() {
+        $('.carousel').carousel('next');
+          setTimeout(autoplay, 4500);
+      }      
+    </script>
+
+    
+    
+  {% endblock %}
+  </body>
+</html>
+

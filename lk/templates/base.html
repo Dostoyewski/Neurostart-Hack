@@ -1,0 +1,295 @@
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="one-more-city">
+
+    <title>Заходи, не стесняйся</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/only-size.css' %}  ?ver=2" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main-for-all-page.css' %}  ?ver=2" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+
+    {% load i18n %}
+    {% load account socialaccount %}
+  </head>
+
+<body>
+  <nav role="navigation">
+    <div class="nav-wrapper">
+    <div class="container">
+        <a href="/" class="brand-logo"><img src="{% static 'images/logotremor1.png' %}" id="logo1" style="padding: 1%;" height="60px" alt="LOGO"></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons" style="color: black;">menu</i></a>
+        <ul class="right hide-on-med-and-down">            
+        {% if not user.is_authenticated %}
+        <li data-menuanchor="news"><a href="#news">Новости</a></li>        
+        <li data-menuanchor="activity"><a href="#activity">Активности</a></li>
+        <li data-menuanchor="about"><a href="#about">О нас</a></li>
+        <li><a class="modal-trigger" href="#modal1">Войти</a></li>
+        {% else %}        
+        <li data-menuanchor="news"><a href="#news">Новости</a></li>        
+        <li data-menuanchor="activity"><a href="#activity">Активности</a></li>
+        <li data-menuanchor="about"><a href="#about">О нас</a></li>
+        <li><a href="{% url 'account' %}">{{ user.get_username }}</a></li>
+        <li><a class="modal-trigger" href="#modal2">Выйти</a></li>
+        {% endif %}
+        </ul>
+        <ul class="sidenav" id="mobile-demo">
+        {% if not user.is_authenticated %}        
+        <li data-menuanchor="news"><a href="#news">Новости</a></li>        
+        <li data-menuanchor="activity"><a href="#activity">Активности</a></li>
+        <li data-menuanchor="about"><a href="#about">О нас</a></li>
+        <li><a class="modal-trigger" href="#modal1">Войти</a></li>
+        {% else %}        
+        <li data-menuanchor="news"><a href="#news">Новости</a></li>        
+        <li data-menuanchor="activity"><a href="#activity">Активности</a></li>
+        <li data-menuanchor="about"><a href="#about">О нас</a></li>
+        <li><a href="{% url 'account' %}">{{ user.get_username }}</a></li>
+        <li><a class="modal-trigger" href="#modal2">Выйти</a></li>
+        {% endif %}
+        </ul>           
+    </div>
+    </div>
+</nav>
+    
+<!-- Modal Structure LOGIN\REGISTRATION-->
+<div id="modal1" class="modal s12">
+    <div class="modal-content">
+        <div class="modal-header modal-header-tab">
+          <a href="#" class="modal-close right"><i class="material-icons">close</i></a>          
+        </div>    
+       <div class="modal-body">
+            <div class="center logo">
+                <img src="{% static 'images/logotremor1.png' %}" class="center" id="logo" height="70px" alt="LOGO"> 
+            </div>        
+            <div class="section">
+                <div id="2" style="display:block">
+                    <form id="form1" class="ajax-post" role="form" action="{% url 'rest_login' %}">
+                      {% csrf_token %}                        
+                        <label for="username" class="col-sm-4 control-label">Имя пользователя</label>
+                        <div class="col-sm-10">
+                            <input name="username" type="text" class="form-control" id="username" placeholder="Имя пользователя" tabindex="1">
+                        </div>
+            
+                        <label for="password" class="col-sm-4 control-label">Пароль</label>
+                        <div class="col-sm-10">
+                        <input name="password" type="password" class="form-control" id="password" placeholder="Пароль" tabindex="2">
+                        </div>
+
+                        <div class="error">
+                            <p class="flow-text red-text api-response"></p>
+                        </div>
+                    
+                        <div class="center">
+                        <button type="submit" 
+                        onclick=""  
+                        
+                        
+                        id="submit1" class="btn center">ВОЙТИ</button>
+                        </div>
+                        
+                    </form>                    
+                    
+                    <div class="modal-footer">
+                        <div>
+                            <div class="no-acount">Нет аккаунта?</div>  
+                            <a href="#" onClick="show();" class="register">ЗАРЕГИСТРИРОВАТЬСЯ</a>
+                        </div>    
+                    </div>                        
+                </div>                
+                <div id="3" style="display:none">
+                    <form id="form2"  id="signup" role="form" action="{% url 'rest_register' %}">
+                      {% csrf_token %}
+                          <label for="email" class="col-sm-2 control-label">Email</label>
+                          <div class="col-sm-10">
+                            <input name="email" type="text" class="form-control" id="email" placeholder="example@yandex.ru">
+                          </div>
+                      
+                          <label for="username" class="col-sm-2 control-label">Имя пользователя</label>
+                          <div class="col-sm-10">
+                            <input name="username" type="text" class="form-control" id="username1" placeholder="Имя пользователя">
+                          </div>
+                      
+                          <label for="password1" class="col-sm-2 control-label">Пароль</label>
+                          <div class="col-sm-10">
+                            <input name="password1" type="password" class="form-control" id="password1" placeholder="Пароль">
+                          </div>
+                      
+                          <label for="password2" class="col-sm-2 control-label">Пароль ещё раз</label>   
+                          <div class="col-sm-10">
+                            <input name="password2" type="password" class="form-control" id="password2" placeholder="Пароль ещё раз">
+                          </div>
+
+                          <div class="error">
+                            <p class="flow-text red-text api-response">THIS IS SOME ERRORS</p>
+                          </div>
+                      
+                          <div class="center">
+                            <button type="submit" id="submit2" class="btn btn-default">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                          </div>
+                      
+                        <div class="api-response"></div>
+                    </form>
+                    <div class="modal-footer">
+                        <div>
+                            <div class="no-acount">Есть аккаунт?</div>  
+                            <a href="#" onClick="show();" class="register">ВОЙТИ</a>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal Structure LOGOUT-->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <div class="modal-header modal-header-tab">
+          <a href="#" class="modal-close right"><i class="material-icons">close</i></a>          
+        </div>    
+        <div class="modal-body">
+            <div class="center logo">
+                <img src="{% static 'images/logotremor1.png' %}" class="center" id="logo" height="70px" alt="LOGO"> 
+            </div>
+            <div class="row">
+              <form class="ajax-post" role="form" action="{% url 'rest_logout' %}">
+              {% csrf_token %}
+                <div class="center col s12">
+                    Вы уверены, что хотите выйти?
+                </div>
+
+                <div class="center col s6">
+                    <button type="submit" onclick="logout(); var delayInMilliseconds = 180; //1 second
+                    setTimeout(function() {
+                      window.location.reload()
+                      //your code to be executed after 1 second
+                    }, delayInMilliseconds);" class="btn modal-close" href="{% url 'rest_logout' %}">ВЫЙТИ</button> 
+                </div>
+            </form>
+            <button href="#"  class="col s6 btn modal-close">ОСТАТЬСЯ</button></div> 
+            
+        </div>
+    </div>
+</div>
+
+{% block script %}
+<script type="text/javascript">
+  jQuery(function($){
+      if (matchMedia) {
+          const mq = window.matchMedia("(min-width: 900px)");
+          mq.addListener(WidthChange);
+          WidthChange(mq);
+      }
+
+      function WidthChange(mq) {
+          if (mq.matches) {                
+              $("#logo").attr("src","{% static 'images/logotremor1.png' %}");            
+          } else {                
+              $("#logo").attr("src","{% static 'images/logotremoro.png' %}");             
+          }
+      }
+  });
+</script>
+
+<script type="text/javascript">
+  jQuery(function($){
+      if (matchMedia) {
+          const mq = window.matchMedia("(min-width: 600px)");
+          mq.addListener(WidthChange);
+          WidthChange(mq);
+      }
+
+      function WidthChange(mq) {
+          if (mq.matches) {                
+              $("#logo1").attr("height","60px");            
+          } else {                
+              $("#logo1").attr("height","50px");             
+          }
+      }
+  });
+</script>
+
+<script>
+  show.visible = '2';
+  show.hidden = '3';
+   function show(){
+       show.hidden = show.visible;
+       show.visible = (show.visible === '2')?'3':'2';
+      document.getElementById(show.visible).style.display = 'block';
+      document.getElementById(show.hidden).style.display = 'none';
+  }
+</script>
+
+
+
+<!-- <script>
+  document.getElementsByClassName('btn').onsubmit = function(){
+  location.reload(true);
+}
+</script> -->
+
+  <script src="{% static 'js/getCookie.js' %}"></script>
+  <script src="{% static 'js/logout.js' %}"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    });
+  </script>
+
+  <script>
+      $(document).ready(function(){
+      $('.modal').modal();
+      });
+  </script>    
+
+
+  <script type="text/javascript">
+    var error_response = function(data){
+      //$('.api-response').html("API Response: " + data.status + ' ' + data.statusText + '<br/>Content: ' + data.responseText);      
+      // let a = data.responseText;
+      let a = data[Object.keys(data)[18]]
+      let b = JSON.stringify(a).split(separator=':')[1].split(separator='"')[1].split(separator="\\")[0];
+      $('.api-response').html(b);
+
+    }
+    var susccess_response = function(data){
+      // $('.api-response').html("API Response: OK<br/>Content: " + JSON.stringify(data));
+      // var delayInMilliseconds = 100; //1 second
+      // setTimeout(function() {
+        window.location.reload()
+        //your code to be executed after 1 second
+      // }, delayInMilliseconds);
+    }
+
+    $().ready(function(){
+      $('form.ajax-post button[type=submit]').click(function(){
+        var form = $('form.ajax-post');
+        $.post(form.attr('action'), form.serialize())
+        .fail(function(data){error_response(data);})
+        .done(function(data){susccess_response(data);});
+        return false;
+      });
+    });
+  </script>
+
+  
+  {% endblock %}
+  <!-- или реально присралось или скучно -->
+
+  </body>
+</html>

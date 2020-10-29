@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Профиль</title>
+	
+	<link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}  ?ver=2" />	
+    <link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}  ?ver=2" />	
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mmain-for-all-page.css' %}  ?ver=2" />
+	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>	
+    {% include 'main_design.html' %}
+	
+	<div class="container white" style="width:100%; max-width: 100%; margin: 2em 0 0; border-radius: 2em; padding: 2em 0em 2em 0em;">
+		<div class="row">
+			<div class="col s12 m4 l4 first-column">				
+				<div class="row valign-wrapper center">
+					<div class="col s12">
+						<h5>Личный кабинет</h5>					  
+					</div>
+				</div>
+				<div class="row valign-wrapper center">
+					<div class="col s12" >
+					  <img src="{{ profile.avatar.url }}" alt="Profile Photo" class="circle responsive-img" >
+					</div>					
+				</div>
+				<div class="row valign-wrapper center">
+					<div class="col s12">
+					  <p>Имя Фамилия</p>
+					</div>					
+				</div>
+				<div class="row valign-wrapper center">
+					<div class="col s12">
+					  <p>Статус (врач)</p>
+					</div>					
+				</div>
+			</div>
+
+			<div class="col s12 m8 l8 second-column">
+				<div class="row valign-wrapper">
+					<div class="col s12">
+						<h5>Подробная информация</h5>					  
+					</div>
+				</div>			
+				<div class="row valign-wrapper">
+					<div class="col s12">
+						<div class="row">
+                            <form action="/account/" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form }}
+                                <input type="submit" value="Submit">
+                            </form>
+                        </div>
+					</div>					
+				</div>
+			</div>			
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+	<script src="{% static '/js/registerSw.js' %}"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', e => {
+			let tabElements = document.querySelectorAll('.tabs')
+			let result = M.Tabs.init(tabElements, {})
+
+			let datepickers = document.querySelectorAll('.datepicker')
+			result = M.Datepicker.init(datepickers, {
+				format: 'yyyy-mm-dd'
+			})
+		})
+	</script>
+
+	<script>
+		$(document).ready(function(){
+    		$('select').formSelect();
+  		});
+  	</script>
+	
+</body>
+</html>
+
+
