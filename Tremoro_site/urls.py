@@ -26,6 +26,7 @@ from Tremoro_site import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('lk.urls'), name='home'),
+    path('video/', include('video_proc.urls'), name='videos'),
     url(r'^email-verification/$',
         TemplateView.as_view(template_name="email_verification.html"),
         name='email-verification'),

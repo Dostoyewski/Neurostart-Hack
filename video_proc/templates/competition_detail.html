@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ЗАГРУЗИТЕ СВОЕ ВИДЕО, МАТЬ ВАШУ</title>
+</head>
+<body>
+    {{ comp_profile.header }}<br>
+    {{ comp_profile.text }}
+    {{ comp_profile.video_ref }}<br>
+    Награда: {{ comp_profile.exp }}<br>
+    {{ absolute }}
+    <form action="{{ absolute }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
