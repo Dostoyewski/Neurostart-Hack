@@ -14,7 +14,8 @@ class CompetitionRecordingForm(forms.ModelForm):
             # validate content type
             main, sub = video.content_type.split('/')
             if not (main == 'video' and sub in ['avi', 'mp4']):
-                raise forms.ValidationError(u'Please use a AVI or MP4 video.')
+                raise forms.ValidationError(u'Разрешенные форматы — .avi или .mp4. Пожалуйста,'
+                                            u' загрузите видео разрешенного формата.')
 
         except AttributeError:
             """

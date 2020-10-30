@@ -10,6 +10,7 @@
         {{ recording.header }}<br>
         {{ recording.text }}
         {{ recording.video_ref }}<br>
+        Есть запись от текущего пользвателя: {{ recording.ifExist }}<br>
         Награда: {{ recording.exp }}<br>
         <form action="{{ recording.slug }}">
             <input type="submit" value="Go to Video" />

@@ -15,7 +15,6 @@ def video_recording(request, slug):
     :param slug: slug to UProfile
     :return: render
     """
-    print(slug)
     v_profile = get_object_or_404(Competition, slug=slug)
     if request.method == 'POST':
         form = CompetitionRecordingForm(request.POST, request.FILES)
@@ -40,5 +39,21 @@ def competitions_list(request):
     :param request:
     :return:
     """
-    return render(request, 'videos_home.html', {"recordings": CompetitionSerializer(Competition.objects.all(),
-                                                                                    many=True).data})
+    competitions = Competition.objects.all()
+    # Array with serialized competitions
+    comp_arr = []
+    if not request.user.is_anonymous:
+        for obj in competitions:
+            serialized = CompetitionSerializer(obj).data
+            try:
+                rec = get_object_or_404(CompetitionRecording, user=request.user, competition=obj)
+                serialized['ifExist'] = True
+            except:
+                serialized['ifExist'] = False
+            comp_arr.append(serialized)
+        return render(request, 'videos_home.html', {"recordings": comp_arr,
+                                                    "message": "ok"})
+    else:
+        return render(request, 'videos_home.html', {"recordings": CompetitionSerializer(Competition.objects.all(),
+                                                                                        many=True).data,
+                                                    "message": "Для загрузки видео необходимо войти"})
