@@ -9,7 +9,7 @@
 
 body {    
     background-attachment: fixed;
-    margin: 2em !important;
+    margin: 2em;
 }
 
 html{
@@ -25,7 +25,7 @@ html{
       linear-gradient(252deg, hsla(18.57, 100%, 62.07%, 1) 15%, hsla(18.57, 100%, 62.07%, 0) 80%),
       linear-gradient(245deg, hsla(309.67, 93.68%, 44.13%, 1) 100%, hsla(309.67, 93.68%, 44.13%, 0) 70%);
 }   
-
+}
 
 * {
     box-sizing: border-box;
@@ -92,58 +92,4 @@ html{
     flex-direction: row;
     justify-content: left;
     align-items: center;
-}
-
-/* nav */
-nav, .carousel{
-    background-color: white;
-    box-shadow: 0em;
-    border-radius: 1em;
-}
-
-nav ul a{
-    color: black;
-}
-
-nav .sidenav-trigger{
-    color: black !important;
-}
-
-.logo{
-    margin: 0 0 5%;
-}
-
-/* modal */
-.modal {
-    border-radius: 1em;
-    max-height: 90% !important;
-}
-
-.modal-content {
-    border-radius: 1em;
-    padding: 3rem 3rem 0rem 3rem !important;    
-    background-color: white;
-}
-
-.modal-close{
-    color: black;
-}
-
-.modal .modal-footer{
-    background-color: white;
-    padding: 0 0 5%;
-    margin: 0em;
-}
-
-.btn{
-    background-color: #60c6f2;
-    text-decoration-color: white;
-}
-
-button{
-    margin: 5% 0 0 ;
-}
-
-.error{
-    margin: 5%;
 }

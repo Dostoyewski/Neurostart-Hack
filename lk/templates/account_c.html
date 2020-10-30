@@ -9,34 +9,36 @@
 
 	<!-- <link rel="stylesheet" href="{% static 'css/common.css' %}" />
 	<link rel="stylesheet" href="{% static 'css/style_account.css' %}" /> -->
-	<link rel="stylesheet" href="{% static 'css/materialize.css' %}" />	
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}  ?ver=2" />	
-    <link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}  ?ver=2" />
+	<!-- <link rel="stylesheet" href="{% static 'css/materialize.css' %}" />	 -->
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}  ?ver=2" />	 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style-profile.css' %}  ?ver=2" />
+	
+	<link rel="icon" href="images/logo-icon.ico">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-	<div class="navbar-fixed">
-		<nav>
-		  <div class="nav-wrapper">
-			<div class="container">
-			  <a href="/" class="brand-logo"><img src="{% static 'images/logotremor1.png' %}" style="padding: 1%;" height="60px" alt="LOGO"></a>
-			  <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-			  <ul class="right hide-on-med-and-down">
-				<li><a href="#">Активности</a></li>
-				<li><a href="#">Личный кабинет</a></li>
-				<li><a href="#">Сообщения</a></li>
-				<li><a class="modal-trigger" href="#modal1">Войти</a></li>
-			  </ul>
-			  <ul class="sidenav" id="mobile-demo">
-				<li><a href="#">Активности</a></li>
-				<li><a href="#">Личный кабинет</a></li>
-				<li><a href="#">Сообщения</a></li>
-				<li><a class="modal-trigger" href="#modal1">Войти</a></li>
-			  </ul>
-			</div>
-		  </div>
-		</nav>
+	<div id="menu-section">
+		<div id="logo">
+			<img src="{% static 'images/logo-icon.svg' %}" alt="">
+			<p>TREMORO</p>
+		</div>
+
+		
+
+		<div id="menu">
+			<a href="{% url 'account' %}" class="waves-effect waves-dark menu-entry selected"><i class="material-icons left selected">account_circle</i>Аккаунт</a>
+			<a href="" class="waves-effect waves-dark menu-entry"><i class="material-icons left " >dashboard</i>Новости</a>
+			<a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left" >date_range</i>Активности</a>
+			<a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left" >supervisor_account</i>Пользователи</a>
+			<a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left">favorite_border</i>О нас</a>
+			<a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left" >settings</i>Настройки</a>
+		</div>
+
+		<div id="join-button-space">
+		  <button class="btn-large waves-effect waves-light">Присоединиться</button>
+		</div>
+
 	</div>
 	
 	
