@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from .models import Competition, CompetitionRecording
 from .serializers import CompetitionRecordingSerializer, CompetitionSerializer
 from django.contrib.auth.decorators import login_required
@@ -46,7 +46,7 @@ def competitions_list(request):
         for obj in competitions:
             serialized = CompetitionSerializer(obj).data
             try:
-                rec = get_object_or_404(CompetitionRecording, user=request.user, competition=obj)
+                rec = get_list_or_404(CompetitionRecording, user=request.user, competition=obj)
                 serialized['ifExist'] = True
             except:
                 serialized['ifExist'] = False

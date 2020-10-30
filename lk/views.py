@@ -125,5 +125,10 @@ def home(request):
     :param request:
     :return:
     """
+    if not request.user.is_anonymous:
+        u_profile = get_object_or_404(UserProfile, user=request.user)
+    else:
+        u_profile = {'name': "Имя", 'vorname': "Фамилия"}
     return render(request, 'main.html', {"recordings": NewsRecordingSerializer(NewsRecording.objects.all(),
-                                                                               many=True).data})
+                                                                               many=True).data,
+                                         'profile': u_profile})
