@@ -78,6 +78,15 @@ def update_params(request):
     return Response({"message": "Method not allowed!"})
 
 
+def news_list(request):
+    """
+    page with news list
+    :param request:
+    :return:
+    """
+    return render(request, 'news.html', {"recordings": NewsRecordingSerializer(NewsRecording.objects.all(),
+                                                                               many=True).data})
+
 @login_required()
 @api_view(['GET', 'POST'])
 def get_diary_list(request):
