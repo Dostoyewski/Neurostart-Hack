@@ -10,13 +10,11 @@
     <title>TREMORO</title>
     <link rel="icon" href="images/logo-icon.ico">
 
-      
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}  ?ver=2" />
-    
+
     {% load i18n %}
     {% load account socialaccount %}
-    {% block content %}
-
   </head>
 
   <body>
@@ -28,12 +26,12 @@
               <p>TREMORO</p>
           </div>
 
-          
+
 
           <div id="menu">
               <a href="{% url 'account' %}" class="waves-effect waves-dark menu-entry"><i class="material-icons left">account_circle</i>Аккаунт</a>
               <a href="" class="waves-effect waves-dark menu-entry selected"><i class="material-icons left selected" >dashboard</i>Новости</a>
-              <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left" >date_range</i>Активности</a>
+              <a href="{% url 'competition_list' %}" class="waves-effect waves-dark menu-entry"><i class="material-icons left" >date_range</i>Активности</a>
               <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left" >supervisor_account</i>Пользователи</a>
               <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left">favorite_border</i>О нас</a>
               <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left" >settings</i>Настройки</a>
@@ -58,7 +56,7 @@
                     <a class="btn waves-effect white grey-text darken-text-2">button</a>
                   </div> -->
                   {% for fd in recordings %}
-                  <div class="carousel-item" style="background-image: url({{fd.img}});" href="#one!"> 
+                  <div class="carousel-item" style="background-image: url({{fd.img}});" href="#one!">
                     <h2 class="black-text">{{fd.header}}</h2>
                     <p class="black-text">{{fd.text}}</p>
                   </div>
@@ -232,13 +230,13 @@
 
                 <form class="ajax-post" id="#logout-button" role="form" action="{% url 'rest_logout' %}">
 
-                  {% csrf_token %}    
+                  {% csrf_token %}
                     <div class="center">
                         <button id="logout-button" type="submit" onclick="logout(); var delayInMilliseconds = 180; //1 second
                         setTimeout(function() {
                           window.location.reload()
                           //your code to be executed after 1 second
-                        }, delayInMilliseconds);" class="btn-large waves-effect waves-light" href="{% url 'rest_logout' %}">ВЫЙТИ</button> 
+                        }, delayInMilliseconds);" class="btn-large waves-effect waves-light" href="{% url 'rest_logout' %}">ВЫЙТИ</button>
                     </div>
                 </form>
 
@@ -268,17 +266,17 @@
                     <p class="flow-text red-text api-response"></p>
                   </div>
 
-                  <button class="btn waves-effect waves-light" type="submit" 
+                  <button class="btn waves-effect waves-light" type="submit"
                   onclick="" id="submit1">Вход</button>
-                </div>                 
+                </div>
               </form>
 
               <div class="center">
-                <p>Нет аккаунта?</p>  
+                <p>Нет аккаунта?</p>
                 <a href="#" onClick="show();" style="color:  #a692c7;">ЗАРЕГИСТРИРОВАТЬСЯ</a>
               </div>
 
-          </div> 
+          </div>
 
           <div id="3" style="display:none">
 
@@ -307,22 +305,22 @@
                 </div>
 
               </form>
-          
+
               <div class="center">
-                <div class="no-acount">Есть аккаунт?</div>  
+                <div class="no-acount">Есть аккаунт?</div>
                 <a href="#" onClick="show();" style="color:  #a692c7;">ВОЙТИ</a>
               </div>
 
           </div>
-          <img src="{% static 'images/qr-add.png' %}" alt="" class="advertising-block">    
+          <img src="{% static 'images/qr-add.png' %}" alt="" class="advertising-block">
       </div>
       {% endif %}
 
 
-        
+
 
   </div>
-    
+
   <script src="{% static 'js/script.js' %}"></script>
 
   <script>
@@ -359,10 +357,10 @@
 
   <script src="{% static 'js/getCookie.js' %}"></script>
   <script src="{% static 'js/logout.js' %}"></script>
-  
+
   <script type="text/javascript">
     var error_response = function(data){
-      //$('.api-response').html("API Response: " + data.status + ' ' + data.statusText + '<br/>Content: ' + data.responseText);      
+      //$('.api-response').html("API Response: " + data.status + ' ' + data.statusText + '<br/>Content: ' + data.responseText);
       // let a = data.responseText;
       let a = data[Object.keys(data)[18]]
       let b = JSON.stringify(a).split(separator=':')[1].split(separator='"')[1].split(separator="\\")[0];
@@ -388,8 +386,6 @@
       });
     });
   </script>
-
-  {% endblock %}
   </body>
 </html>
 
