@@ -1,11 +1,12 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from .models import UserProfile, DiaryRecording, NewsRecording
-from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import DiaryRecordingSerializer, NewsRecordingSerializer, UserProfileSerializer
+
 from .forms import UserProfileForm
+from .models import UserProfile, DiaryRecording, NewsRecording
+from .serializers import DiaryRecordingSerializer, NewsRecordingSerializer, UserProfileSerializer
 
 
 def profile(request, slug):
@@ -86,6 +87,7 @@ def news_list(request):
     """
     return render(request, 'news.html', {"recordings": NewsRecordingSerializer(NewsRecording.objects.all(),
                                                                                many=True).data})
+
 
 @login_required()
 @api_view(['GET', 'POST'])

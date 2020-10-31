@@ -2,8 +2,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.urls import reverse
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 
 from lk.models import UserProfile
 from .forms import CompetitionRecordingForm
@@ -34,21 +32,35 @@ def video_recording(request, slug):
             return HttpResponseRedirect(reverse('competition_list'))
 
     else:
+        try:
+            recording = get_object_or_404(CompetitionRecording, user=request.user, competition=v_profile)
+            has_loaded = True
+        except:
+            has_loaded = False
         form = CompetitionRecordingForm()
     return render(request, 'competition_detail.html', {'comp_profile': v_profile,
                                                        'form': form,
-                                                       'absolute': reverse('video_rec', args=(v_profile.slug, ))})
+                                                       'absolute': reverse('video_rec', args=(v_profile.slug,)),
+                                                       'result': recording,
+                                                       'hasLoaded': has_loaded})
 
 
-@api_view()
-def load_file(request):
+def grishas_intro(request):
     """
-    load files from smartphone
+    intro for smartphones
     :param request:
     :return:
     """
-    print(request.FILES)
-    return Response({"message": "ok"})
+    return render(request, 'grishas-intro.html', {})
+
+
+def grishas_intro_timer(request):
+    """
+    intro for smartphones
+    :param request:
+    :return:
+    """
+    return render(request, 'grishas-timer.html', {})
 
 
 def competitions_list(request):
