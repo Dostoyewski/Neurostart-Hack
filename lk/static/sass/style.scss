@@ -66,7 +66,7 @@ body {
 
     #menu-section {
         background-color: white;
-        flex-basis: 20%;
+        flex-basis: 25%;
 
         display: flex;
         flex-direction: column;
@@ -225,10 +225,13 @@ body {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
+                    justify-content: center;
+
+                    flex-wrap: wrap;
 
                     img {
-                        // flex-basis: 10%;
                         height: 9em;
+                        margin: 1em;
                     }
 
                     #video-button {
@@ -252,7 +255,8 @@ body {
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
-                        margin-left: 1.2em;
+
+                        max-width: 10em;
 
                         p {
                             padding: 0 1.2em;
@@ -420,5 +424,21 @@ body {
 
     button {
         margin: 1em 0;
+    }
+}
+
+.fullscreen-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100%;
+
+    h1 {
+        text-align: center;
+
+        background: linear-gradient(180deg, #FFA68D 9.38%, #8490EA 100%);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
     }
 }

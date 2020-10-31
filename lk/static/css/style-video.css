@@ -8137,7 +8137,7 @@ body {
 }
 #main-sections #menu-section {
   background-color: white;
-  flex-basis: 20%;
+  flex-basis: 25%;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -8149,7 +8149,7 @@ body {
 }
 #main-sections #menu-section #logo img {
   height: 4.2em;
-  margin: 1.5em;
+  margin: 1.5em 0.3em 1.5em 1.5em;
 }
 #main-sections #menu-section #logo p {
   font-weight: bold;
@@ -8166,7 +8166,7 @@ body {
 }
 #main-sections #menu-section #menu .menu-entry {
   font-size: 1.001em;
-  padding: 1.1em 1.1em 1.1em 6em;
+  padding: 1.1em 1.1em 1.1em 3em;
   width: 100%;
 }
 #main-sections #menu-section #menu .menu-entry i {
@@ -8184,7 +8184,7 @@ body {
   top: 50%;
   right: 0;
   height: 60%;
-  width: 2px;
+  width: 5px;
   transform: translateY(-50%);
 }
 #main-sections #menu-section #menu .menu-entry.highlighted {
@@ -8195,8 +8195,11 @@ body {
 #main-sections #menu-section #menu .menu-entry:not(.selected):not(.highlighted) {
   color: #a9abb9;
 }
+#main-sections #menu-section #menu .menu-entry:not(.selected):not(.highlighted) i {
+  color: #a9abb9;
+}
 #main-sections #menu-section #menu .submenu .menu-entry {
-  padding-left: 9em;
+  padding-left: 5em;
 }
 #main-sections #content-section {
   flex-grow: 1;
@@ -8294,6 +8297,19 @@ body {
   width: 100%;
   padding: 1.2em 1.7em 1.2em 1.7em;
   border-radius: 0.4em;
+}
+
+.fullscreen-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.fullscreen-message h1 {
+  text-align: center;
+  background: linear-gradient(180deg, #FFA68D 9.38%, #8490EA 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 /*# sourceMappingURL=style-video.css.map */

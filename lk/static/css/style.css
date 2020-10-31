@@ -8137,7 +8137,7 @@ body {
 }
 #main-sections #menu-section {
   background-color: white;
-  flex-basis: 20%;
+  flex-basis: 25%;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -8267,9 +8267,12 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 #main-sections #content-section #big-cards .col .col-content img {
   height: 9em;
+  margin: 1em;
 }
 #main-sections #content-section #big-cards .col .col-content #video-button {
   border-radius: 12px;
@@ -8288,7 +8291,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 1.2em;
+  max-width: 10em;
 }
 #main-sections #content-section #big-cards .col .col-content div p {
   padding: 0 1.2em;
@@ -8421,6 +8424,19 @@ body {
 }
 .simple-form button {
   margin: 1em 0;
+}
+
+.fullscreen-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.fullscreen-message h1 {
+  text-align: center;
+  background: linear-gradient(180deg, #FFA68D 9.38%, #8490EA 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 /*# sourceMappingURL=style.css.map */
