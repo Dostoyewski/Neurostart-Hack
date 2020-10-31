@@ -37,6 +37,7 @@ def video_recording(request, slug):
             has_loaded = True
         except:
             has_loaded = False
+            recording = ''
         form = CompetitionRecordingForm()
     return render(request, 'competition_detail.html', {'comp_profile': v_profile,
                                                        'form': form,
