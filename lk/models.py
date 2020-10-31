@@ -1,11 +1,12 @@
-from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.utils.text import slugify
 import datetime
-from django.conf import settings
+
+from django.contrib.auth.models import User
+from django.db import models
+from django.db.models.signals import post_save
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.text import slugify
+
 # Create your models here.
 
 GENDER = (
@@ -46,7 +47,7 @@ class UserProfile(models.Model):
     # URL на личную страницу
     slug = models.SlugField(null=True)
     # Avatar
-    avatar = models.ImageField(upload_to="avatars", default="static/images/toothless.jpg")
+    avatar = models.ImageField(upload_to="avatars", default="lk/static/images/toothless.jpg")
 
     def __str__(self):
         return "%s's profile" % self.user
