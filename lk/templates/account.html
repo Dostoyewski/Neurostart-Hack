@@ -14,8 +14,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style-profile.css' %}  ?ver=2"/>
 
     <link rel="icon" href="images/logo-icon.ico">
-	
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 {% include 'base.html' %}
@@ -32,21 +32,25 @@
         </div> -->
 
         <div id="menu">
-            <a href="{% url 'account' %}" class="waves-effect waves-dark menu-entry selected"><i
-                    class="material-icons left">cloud</i>Аккаунт</a>
-            <a href="#" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>Новости</a>
-            <a href="{% url 'competition_list' %}" class="waves-effect waves-dark menu-entry"><i
-                    class="material-icons left">cloud</i>Активности</a>
-            <a href="#" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>О нас</a>
-            <a href="#" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>Настройки</a>
+            <a href="{% url 'account' %}" class="waves-effect waves-dark menu-entry selected"
+               style="padding-left: 2em;"><i class="material-icons left selected">account_circle</i>Аккаунт</a>
+            <a class="waves-effect waves-dark menu-entry " style="padding-left: 2em;"><i class="material-icons left">dashboard</i>Новости</a>
+            <a href="{% url 'competition_list' %}" class="waves-effect waves-dark menu-entry"
+               style="padding-left: 2em;"><i class="material-icons left">date_range</i>Активности</a>
+            <a class="waves-effect waves-dark menu-entry unassigned" style="padding-left: 2em;"><i
+                    class="material-icons left">supervisor_account</i>Пользователи</a>
+            <a class="waves-effect waves-dark menu-entry unassigned" style="padding-left: 2em;"><i
+                    class="material-icons left">favorite_border</i>О нас</a>
+            <a class="waves-effect waves-dark menu-entry unassigned" style="padding-left: 2em;"><i
+                    class="material-icons left">settings</i>Настройки</a>
         </div>
     </div>
 
     <div id="content-section" class="scrollbarless">
         <div id="content-topbar">
-            <input type="text" id="content-search" placeholder="Поиск">
-            <button id="notofications-button" class="btn-flat waves-effect waves-dark"><i
-                    class="material-icons">cloud</i></button>
+            <input type="text" id="content-search" placeholder="Поиск" style="margin-bottom: 0em">
+            <button id="notofications-button" class="btn-flat waves-effect waves-dark unassigned"><i
+                    class="material-icons" style="color: #768492;">notifications</i></button>
         </div>
 
         <div id="content-main">
@@ -89,7 +93,7 @@
             <div id="profile-non-summary">
                 <h4>Общая информация</h4>
 
-                <div id="profile-general">
+                <div id="profile-general" style="margin: 0em 2.5em;">
                     <div class="row valign-wrapper">
                         <div class="col s12">
                             <div class="row">
@@ -189,35 +193,35 @@
 
 <!-- <div class="container white" style="width:100%; max-width: 100%; margin: 2em 0 0; border-radius: 2em; padding: 2em 0em 2em 0em;">
 		<div class="row">
-			<div class="col s12 m4 l4 first-column">				
+			<div class="col s12 m4 l4 first-column">
 				<div class="row valign-wrapper center">
 					<div class="col s12">
-						<h5>Личный кабинет</h5>					  
+						<h5>Личный кабинет</h5>
 					</div>
 				</div>
 				<div class="row valign-wrapper center">
 					<div class="col s12" >
 					  <img src="{{ profile.avatar.url }}" alt="Profile Photo" class="circle responsive-img" >
-					</div>					
+					</div>
 				</div>
 				<div class="row valign-wrapper center">
 					<div class="col s12">
 					  <p>Имя Фамилия</p>
-					</div>					
+					</div>
 				</div>
 				<div class="row valign-wrapper center">
 					<div class="col s12">
 					  <p>Статус (врач)</p>
-					</div>					
+					</div>
 				</div>
 			</div>
 
 			<div class="col s12 m8 l8 second-column">
 				<div class="row valign-wrapper">
 					<div class="col s12">
-						<h5>Подробная информация</h5>					  
+						<h5>Подробная информация</h5>
 					</div>
-				</div>			
+				</div>
 				<div class="row valign-wrapper">
 					<div class="col s12">
 						<div class="row">
@@ -227,9 +231,9 @@
                                 <input type="submit" value="Submit">
                             </form>
                         </div>
-					</div>					
+					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
 	</div> -->
 
