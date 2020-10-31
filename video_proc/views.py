@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import CompetitionRecordingForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from lk.models import UserProfile
 
 
 @login_required()
@@ -24,6 +25,9 @@ def video_recording(request, slug):
             recording.user = request.user
             recording.competition = v_profile
             recording.save()
+            u_profile = UserProfile.objects.get(user=request.user)
+            u_profile.exp += v_profile.exp
+            u_profile.save()
             return HttpResponseRedirect(reverse('competition_list'))
 
     else:

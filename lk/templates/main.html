@@ -151,9 +151,9 @@
       {% if user.is_authenticated %}
         <div id="profile-section">
             <div id="title-section">
-                <img src="{% static 'images/nika.png' %}" alt="">
+                <img src={{ profile.avatar.url }} alt="">
                 <div>
-                    <p class="name">Вероника Малышева</p>
+                    <p class="name">{{ profile.name }} {{ profile.vorname }}</p>
                     <p class="status">{{ user.get_username }}</p>
                 </div>
                 <!-- <button class="btn-flat waves-effect waves-dark">
