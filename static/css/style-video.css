@@ -8138,8 +8138,6 @@ body {
 #main-sections #menu-section {
   background-color: white;
   flex-basis: 20%;
-  max-width: 18em;
-  min-width: 17em;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
