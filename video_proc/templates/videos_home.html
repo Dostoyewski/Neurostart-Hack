@@ -51,6 +51,31 @@
                     </div>
 
                     <div id="main-content" class="row">
+                        <div class="col m6 s12 l4">
+                            <a class="col-content waves-effect waves-dark unassigned" style="background-image: url('{% static 'images/video_1.svg' %}')">
+                                {% comment %} <div>Test 1</div> {% endcomment %}
+                            </a>
+                        </div>
+                        <div class="col m6 s12 l4">
+                            <a class="col-content waves-effect waves-dark unassigned" style="background-image: url('{% static 'images/video_2.svg' %}')">
+                                {% comment %} <div>Test 2</div> {% endcomment %}
+                            </a>
+                        </div>
+                        <div class="col m6 s12 l4">
+                            <a class="col-content waves-effect waves-dark unassigned" style="background-image: url('{% static 'images/video_3.svg' %}')">
+                                {% comment %} <div>Test 3</div> {% endcomment %}
+                            </a>
+                        </div>
+                        <div class="col m6 s12 l4">
+                            <a class="col-content waves-effect waves-dark unassigned" style="background-image: url('{% static 'images/video_4.svg' %}')">
+                                {% comment %} <div>Test 4</div> {% endcomment %}
+                            </a>
+                        </div>
+                        <div class="col m6 s12 l4">
+                            <a class="col-content waves-effect waves-dark unassigned" style="background-image: url('{% static 'images/video_5.svg' %}')">
+                                {% comment %} <div>Test 5</div> {% endcomment %}
+                            </a>
+                        </div>
                         {% for recording in recordings %}
                             <div class="col m6 s12 l4">
                                 <a class="col-content waves-effect waves-dark" href="{{ recording.slug }}">

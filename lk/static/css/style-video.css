@@ -8239,16 +8239,23 @@ body {
   padding: 2em 4em;
 }
 #main-sections #content-section #main-content .col .col-content {
+  width: 100%;
   height: 100%;
   background-color: white;
   border-radius: 1em;
   position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 #main-sections #content-section #main-content .col .col-content div {
   position: absolute;
   left: 10%;
   top: 10%;
   font-size: 1.4em;
+}
+#main-sections #content-section #main-content .col .col-content .video {
+  width: 100%;
 }
 #main-sections #content-section #main-content .col .col-content.selected {
   box-shadow: 0 0 40px #D2B9FB;
