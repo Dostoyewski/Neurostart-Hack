@@ -1,21 +1,82 @@
+{% load static %}
+{% csrf_token %}
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CHOOSE YOUR FIGHTER, БЛЕАТЬ!</title>
-</head>
-<body>
-    {% for recording in recordings %}
-        <br>
-        {{ recording.header }}<br>
-        {{ recording.text }}
-        {{ recording.video_ref }}<br>
-        Есть запись от текущего пользвателя: {{ recording.ifExist }}<br>
-        Награда: {{ recording.exp }}<br>
-        <form action="{{ recording.slug }}">
-            <input type="submit" value="Go to Video" />
-        </form>
-        <br>
-    {% endfor %}
-</body>
+<html>
+    <head>
+        <title>Tremoro</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style-video.css' %}" />
+
+        <link rel="icon" href="images/logo-icon.ico">
+
+        {% load i18n %}
+        {% load account socialaccount %}
+    </head>
+
+    <body>
+        {% include 'base.html' %}
+
+        <div id="main-sections">
+            <div id="menu-section">
+                <div id="logo">
+                    <img src="{% static 'images/logo-icon.svg' %}" alt="">
+                    <p>TREMORO</p>
+                </div>
+
+                <div id="join-button-space">
+                    <button class="btn-large waves-effect waves-light">Присоединиться</button>
+                </div>
+
+                <div id="menu">
+                    <a href="{% url 'account' %}" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>Аккаунт</a>
+                    <a href="{% url 'home' %}" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>Новости</a>
+                    <div>
+                        <a href="" class="waves-effect waves-dark menu-entry highlighted"><i class="material-icons left">cloud</i>Активности</a>
+                        <div class="submenu">
+                            <a href="" class="waves-effect waves-dark menu-entry selected"><i class="material-icons left">cloud</i>Видео</a>
+                            <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>Опросы</a>
+                            <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>Дневник</a>
+                            <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>Игры</a>
+                        </div>
+                    </div>
+                    <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>О нас</a>
+                    <a href="profile.html" class="waves-effect waves-dark menu-entry"><i class="material-icons left">cloud</i>Настройки</a>
+                </div>
+            </div>
+
+            <div id="content-section" class="scrollbarless">
+                <div id="content-topbar">
+                    <input type="text" id="content-search" placeholder="Поиск">
+                    <button id="notofications-button" class="btn-flat waves-effect waves-dark"><i class="material-icons" style="color: #768492;">notifications</i></button>
+                </div>
+
+                <div id="main-content" class="row">
+                    {% for recording in recordings %}
+                        <div class="col m6 s12 l4">
+                            <a class="col-content waves-effect waves-dark" href="{{ recording.slug }}">
+                                <div>{{ recording.header }}</div>
+                            </a>
+                        </div>
+
+                        {% comment %} {{ recording.header }}
+                        {{ recording.text }}
+                        {{ recording.video_ref }}
+                        Есть запись от текущего пользвателя: {{ recording.ifExist }}
+                        Награда: {{ recording.exp }} {% endcomment %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <script src="js/materialize/bin/materialize.min.js"></script>
+        <script src="js/script.js"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                M.updateTextFields()
+            });
+        </script>
+    </body>
 </html>
