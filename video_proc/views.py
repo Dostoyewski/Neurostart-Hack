@@ -50,6 +50,7 @@ def load_file(request):
     print(request.FILES)
     return Response({"message": "ok"})
 
+
 def competitions_list(request):
     """
     Page with all competitions tasks
