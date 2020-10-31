@@ -278,7 +278,8 @@
 
                 <div id="3" style="display:none">
 
-                    <form id="form2"  id="signup" role="form" action="{% url 'rest_register' %}">
+                    {#                    <form id="form2"  id="signup" role="form" action="{% url 'rest_register' %}">#}
+                    <form id="form2" id="signup" role="form" action="#">
                         {% csrf_token %}
                         <div class="simple-form register-form">
                         <div class="title">РЕГИСТРАЦИЯ</div>
