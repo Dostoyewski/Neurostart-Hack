@@ -1,11 +1,14 @@
-from django.shortcuts import render, get_list_or_404, get_object_or_404
-from .models import Competition, CompetitionRecording
-from .serializers import CompetitionRecordingSerializer, CompetitionSerializer
 from django.contrib.auth.decorators import login_required
-from .forms import CompetitionRecordingForm
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.urls import reverse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from lk.models import UserProfile
+from .forms import CompetitionRecordingForm
+from .models import Competition, CompetitionRecording
+from .serializers import CompetitionSerializer
 
 
 @login_required()
@@ -36,6 +39,16 @@ def video_recording(request, slug):
                                                        'form': form,
                                                        'absolute': reverse('video_rec', args=(v_profile.slug, ))})
 
+
+@api_view()
+def load_file(request):
+    """
+    load files from smartphone
+    :param request:
+    :return:
+    """
+    print(request.FILES)
+    return Response({"message": "ok"})
 
 def competitions_list(request):
     """
