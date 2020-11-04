@@ -30,7 +30,6 @@ def video_recording(request, slug):
             u_profile.exp += v_profile.exp
             u_profile.save()
             return HttpResponseRedirect(reverse('competition_list'))
-
     else:
         try:
             recording = get_object_or_404(CompetitionRecording, user=request.user, competition=v_profile)
@@ -39,11 +38,11 @@ def video_recording(request, slug):
             has_loaded = False
             recording = ''
         form = CompetitionRecordingForm()
-    return render(request, 'competition_detail.html', {'comp_profile': v_profile,
-                                                       'form': form,
-                                                       'absolute': reverse('video_rec', args=(v_profile.slug,)),
-                                                       'result': recording,
-                                                       'hasLoaded': has_loaded})
+        return render(request, 'competition_detail.html', {'comp_profile': v_profile,
+                                                           'form': form,
+                                                           'absolute': reverse('video_rec', args=(v_profile.slug,)),
+                                                           'result': recording,
+                                                           'hasLoaded': has_loaded})
 
 
 def grishas_intro(request):
